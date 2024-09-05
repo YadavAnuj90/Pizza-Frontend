@@ -165,7 +165,7 @@ function SignupPresentation({handleUserInput , handleFormSubmit}) {
          name="firstName"
          onChange={handleUserInput}
          required
-         minLength={5}
+         minLength={4}
          placeholder="jhon"
          className="w-full px-3 py-1 mt-2 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out border border-gray-300 rounded outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200">
 

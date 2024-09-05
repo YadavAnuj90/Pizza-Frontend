@@ -113,7 +113,7 @@ function AddProduct() {
             <option value="veg">Vegetarian</option>
             <option value="non-veg">Non-Vegetarian</option>
             <option value="drinks">Soft drinks</option>
-            <option value="sides"></option>
+            <option value="sides">Sides</option>
 
 
             </select>

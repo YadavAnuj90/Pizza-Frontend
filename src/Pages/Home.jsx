@@ -8,6 +8,7 @@ import IconPatchCheck from "../Components/Icons/IconPatchCheak";
 import Layout from "../Layouts/Layout";
 
 function Home() {
+  
   return (
     <Layout>
     <div>
