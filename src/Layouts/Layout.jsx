@@ -1,7 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
 import Pizzalogo from "../assets/Images/pizza1.png";
 import Footer from "../Components/Icons/Footer";
+import { Link } from "react-router-dom";
+import { logout } from "../Redux/Slices/AuthSlice";
 
 function Layout({ children }) {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
+  
+  async function handleLogout(e) {
+        e.preventDefault();
+        dispatch(logout());
+    
+  }
+
   return (
     <div>
       <nav className="flex items-center justify-around h-16 text-[#6B7280] font-mono border-none shadow-md">
@@ -13,20 +25,34 @@ function Layout({ children }) {
         <div className="hidden md:block">
           <ul className="flex gap-4">
             <li className="hover:text-[#FF9110]">
-              {" "}
-              <p>Menu </p>
+              { ' ' }
+              <p>Menu {' '}</p>
             </li>
 
             <li className="hover:text-[#FF9110]">
-              {" "}
-              <p>About </p>
+              { ' ' }
+              <p>Services {' '}</p>
             </li>
 
             <li className="hover:text-[#FF9110]">
-              {" "}
-              <p>Services </p>
+              { ' ' }
+              <p>About {' '} </p>
             </li>
           </ul>
+        </div>
+
+        <div>
+            <ul className="flex gap-4">
+              <li className="hover:text-[#f5d238]">
+                 {isLoggedIn ?(
+                     <Link onClick={handleLogout} >Logout</Link>
+                 ): (
+                  <Link to={'/auth/login'}>Login</Link>
+                 )}
+
+              </li>
+            </ul>
+
         </div>
       </nav>
 
