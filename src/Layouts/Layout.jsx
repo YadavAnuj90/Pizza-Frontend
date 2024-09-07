@@ -2,10 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Pizzalogo from "../assets/Images/pizza1.png";
 import Footer from "../Components/Icons/Footer";
 import { Link, useNavigate } from "react-router-dom";
+import CartIcon from '../assets/Images/cart.svg'
 import { logout } from "../Redux/Slices/AuthSlice";
 
 function Layout({ children }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+     const {cartData} = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -53,6 +56,18 @@ function Layout({ children }) {
                  )}
 
               </li>
+              {isLoggedIn && (
+                            <Link to={'/cart'}>
+                                <li>
+                                    <img src={CartIcon} className='w-8 h-8 inline' />
+                                    {' '}
+                                    <p className='text-black inline'>{cartData?.items?.length}</p>
+                                </li>
+                            </Link>
+                            
+                        )}
+
+            
             </ul>
 
         </div>

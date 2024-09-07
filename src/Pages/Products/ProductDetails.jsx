@@ -3,14 +3,13 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getproductDetails } from "../../Redux/Slices/ProductSlice";
 import Layout from "../../Layouts/Layout";
-import { addProductToCart, getCartDetails, removeProductFromCart } from "../../Redux/Slices/cartSlice";
+import { addProductToCart, getCartDetails, removeProductFromCart } from "../../Redux/Slices/CartSlice";
 
 function ProductDetails() {
     const {productId}  = useParams();
     const dispatch = useDispatch();
     const [productDetails , setProductDetails] = useState({});
     const [isInCart ,setIsInCart ] = useState(false);
-    //const {cartsData} = useSelector((state) => state.cart);
 
     async function handleCart() {
         //Add product to cart
@@ -26,7 +25,7 @@ function ProductDetails() {
         //Add product to cart
       const response =   await dispatch(removeProductFromCart(productId));
       if(response?.payload?.data?.success){
-           setIsInCart(true);
+           setIsInCart(false);
             dispatch(getCartDetails());
       }
 

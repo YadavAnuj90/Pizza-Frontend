@@ -2,7 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import AuthSliceReducer from "./Slices/AuthSlice";
 import ProductSliceReducer from "./Slices/ProductSlice"
-import cartSliceReducer from "./Slices/cartSlice";
+import cartSliceReducer from "./Slices/CartSlice";
 
 export const store = configureStore({
      reducer: {
@@ -11,6 +11,10 @@ export const store = configureStore({
         cart: cartSliceReducer
 
      },
-     devTools:true
+     devTools:true,
+     middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+         serializableCheck: false,
+      }),
 
 });
