@@ -70,7 +70,12 @@ export const getCartDetails = createAsyncThunk('/cart/getDetails', async() => {
          return apiResponse
 
   } catch (error) {
-      console.log(error);
+      if(error?.response?.status === 401) {
+        toast.error('Please login to view cart');
+        return {
+            isUnauthorized : true
+        }
+      }
       toast.error('Something Went wrong!!!');
   }
 
@@ -85,7 +90,7 @@ const cartSlice = createSlice({
              
         builder.addCase(getCartDetails.fulfilled , (state , action) => {
             state.cartData = action?.payload?.data?.data;
-        });
+        })
     }
 });
 
