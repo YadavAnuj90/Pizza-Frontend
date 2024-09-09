@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CartIcon from '../assets/Images/cart.svg'
 import { logout } from "../Redux/Slices/AuthSlice";
 import { useEffect } from "react";
-import { getCartDetails } from "../Redux/Slices/CartSlice";
+import { getCartDetails } from "../Redux/Slices/cartSlice";
 
 function Layout({ children }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
